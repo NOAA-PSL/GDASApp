@@ -47,5 +47,16 @@ observers:
 #- !INC ${MARINE_OBS_YAML_DIR}/insitu_profile_dbuoyb.yaml
 #- !INC ${MARINE_OBS_YAML_DIR}/insitu_profile_mbuoy.yaml
 #- !INC ${MARINE_OBS_YAML_DIR}/insitu_profile_mbuoyb.yaml
-- !INC ${MARINE_OBS_YAML_DIR}/insitu_profile_tropical.yaml
+#- !INC ${MARINE_OBS_YAML_DIR}/insitu_profile_tropical.yaml
 - !INC ${MARINE_OBS_YAML_DIR}/insitu_surface_drifter.yaml
+
+# in situ: wod
+- !INC ${MARINE_OBS_YAML_DIR}/wod_t_ctd.yaml # CTD temperature
+  #- !INC ${MARINE_OBS_YAML_DIR}/wod_s_ctd.yaml # CTD temperature
+- !INC ${MARINE_OBS_YAML_DIR}/wod_t_xbt.yaml # CTD temperature
+- !INC ${MARINE_OBS_YAML_DIR}/wod_t_gld.yaml # CTD temperature
+  #- !INC ${MARINE_OBS_YAML_DIR}/wod_s_gld.yaml # CTD temperature
+- !INC ${MARINE_OBS_YAML_DIR}/wod_t_drb.yaml # CTD temperature
+  #- !INC ${MARINE_OBS_YAML_DIR}/wod_s_drb.yaml # CTD temperature
+- !INC ${MARINE_OBS_YAML_DIR}/wod_t_pfl.yaml # CTD temperature
+  #- !INC ${MARINE_OBS_YAML_DIR}/wod_s_pfl.yaml # CTD temperature
