@@ -71,8 +71,8 @@
   branch = develop
 [submodule "parm/jcb-gdas"]
   path = parm/jcb-gdas
-  url = https://github.com/noaa-emc/jcb-gdas
-  branch = develop
+  url = https://github.com/NOAA-PSL/jcb-gdas.git
+  branch = coupled_scoutrun
 [submodule "parm/jcb-algorithms"]
   path = parm/jcb-algorithms
   url = https://github.com/noaa-emc/jcb-algorithms
