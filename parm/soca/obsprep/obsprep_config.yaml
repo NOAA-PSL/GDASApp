@@ -509,6 +509,17 @@ observations:
       min: -3.0
       max: 35.0
 
+- obs space:
+    name: wod_t_mrb
+    provider: WOD_T
+    dmpdir subdir: ocean/insitu
+    type: nc
+    dmpdir regex: 'wod_mrb_*.nc'
+    ocean basin: RECCAP2_region_masks_all_v20221025.nc
+    bounds: # Added by JS to providebounds to the converter
+      min: -3.0
+      max: 35.0
+
 # ocean in situ Salinity from  WOD
 - obs space:
     name: wod_s_ctd
