@@ -67,13 +67,8 @@
   branch = develop
 [submodule "parm/jcb-gdas"]
   path = parm/jcb-gdas
-<<<<<<< HEAD
   url = https://github.com/NOAA-PSL/jcb-gdas.git
-  branch = coupled_scoutrun
-=======
-  url = https://github.com/ClaraDraper-NOAA/jcb-gdas
-  branch = feature/reanalysis_ghcn
->>>>>>> Clara/feature/reanalysis_ghcn
+  branch = snow 
 [submodule "parm/jcb-algorithms"]
   path = parm/jcb-algorithms
   url = https://github.com/noaa-emc/jcb-algorithms
