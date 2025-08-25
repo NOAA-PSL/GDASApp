@@ -1,10 +1,15 @@
 calcfims:
   mkdir:
-    - '{{ DATA }}/obs'
+    - '{{ DATA }}/prep'
   copy:
-    - ['{{ COMIN_OBS }}/{{ OPREFIX }}imssnow96.asc', '{{ DATA }}/obs/ims{{ current_cycle | to_julian }}_4km_v1.3.asc']
-    - ['{{ FIXgfs }}/gdas/obs/ims/IMS_4km_to_{{ CASE }}.mx{{ OCNRES }}.nc', '{{ DATA }}/obs/IMS4km_to_FV3_mapping.{{ CASE }}_oro_data.nc']
+    - ['{{ COMIN_OBS }}/{{ OPREFIX }}imssnow96.asc', '{{ DATA }}/prep/ims{{ current_cycle | to_julian }}_4km_v1.3.asc']
+    - ['{{ FIXgfs }}/gdas/obs/ims/IMS_4km_to_{{ CASE }}.mx{{ OCNRES }}.nc', '{{ DATA }}/prep/IMS4km_to_FV3_mapping.{{ CASE }}_oro_data.nc']
+    - ['{{ COMIN_ATMOS_RESTART_PREV }}/{{ current_cycle | to_fv3time }}.coupler.res', '{{ DATA }}/prep']
+{% for tile in range(1, ntiles+1) %}
+    - ['{{ COMIN_ATMOS_RESTART_PREV }}/{{ current_cycle | to_fv3time }}.sfc_data.tile{{ tile }}.nc', '{{ DATA }}/prep']
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile{{ tile }}.nc", "{{ DATA }}/prep{{ CASE }}.mx{{ OCNRES }}_oro_data.tile{{ tile }}.nc" ]
+{% endfor %}
 ims2ioda:
   copy:
-    - ['{{ DATA }}/ims_snow_{{ current_cycle | to_YMDH }}.nc4', '{{ DATA }}/obs/{{ OPREFIX }}ims_snow.tm00.nc']
+    - ['{{ DATA }}/ims_snow_{{ current_cycle | to_YMDH }}.nc4', '{{ DATA }}/prep/{{ OPREFIX }}ims_snow.tm00.nc']
 

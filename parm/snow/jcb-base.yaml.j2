@@ -77,12 +77,13 @@ observations: all_observations
 
 crtm_coefficient_path: "{{ DATA }}/crtm/"
 
-# Naming conventions for observational files
+# Naming conventions for bufr observational files
 snow_obsdataroot_path: "{{COMIN_OBS}}"
 snow_obsdatain_path: "{{snow_obsdatain_path}}"
 snow_obsdatain_prefix: "{{OPREFIX}}"
 snow_obsdatain_suffix: ".tm00.bufr_d"
 
+snow_prepobs_path: "{{snow_prepobs_path}}"
 snow_obsdataout_path: "{{snow_obsdataout_path}}"
 snow_obsdataout_prefix: diag_
 snow_obsdataout_suffix: "_{{ current_cycle | to_YMDH }}.nc"

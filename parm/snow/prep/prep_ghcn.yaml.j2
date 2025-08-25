@@ -1,0 +1,8 @@
+stage:
+  copy:
+    - ['{{ COMIN_OBS }}/{{ ghcn_filestub }}.csv', '{{ DATA }}/{{ ghcn_filestub }}.csv']
+    - ['{{ COMIN_OBS }}/ghcnd-stations.txt', '{{ DATA }}/ghcnd-stations.txt']
+ghcn2ioda:
+  copy:
+    - ['{{ DATA }}/{{ ghcn_filestub }}.nc4', '{{ DATA }}/prep/{{ OPREFIX }}ghcn_snow.nc']
+
