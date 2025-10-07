@@ -23,7 +23,7 @@ bound_to_include: begin
 minimizer: DRPCG
 final_diagnostics_departures: anlmob
 final_prints_frequency: PT3H
-number_of_outer_loops: 2
+number_of_outer_loops: 1
 analysis_variables: [mass_fraction_of_sulfate_in_air,
                        mass_fraction_of_hydrophobic_black_carbon_in_air,
                        mass_fraction_of_hydrophilic_black_carbon_in_air,
@@ -85,7 +85,7 @@ aero_diagb_smooth_vert_iter: {{ aero_diagb_smooth_vert_iter | default(0) }}
 aero_diffusion_iter: {{ aero_diffusion_iter | default(0) }}
 aero_diffusion_horiz_len: {{ aero_diffusion_horiz_len  | default(1.0, true)}}
 aero_diffusion_fixed_val: {{ aero_diffusion_fixed_val  | default(1.0, true)}}
-aero_rescaling_factor_file: {{ AERO_BMATRIX_RESCALE_TMPL }}
+aero_rescaling_factor_file: {{ AERO_BMATRIX_RESCALE_YAML }}
 
 # Analysis
 aero_analysis_path: ./anl
