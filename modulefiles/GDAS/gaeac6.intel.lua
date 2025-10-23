@@ -10,7 +10,7 @@ prepend_path("MODULEPATH", '/ncrc/proj/epic/spack-stack/c6/spack-stack-1.9.3/env
 prepend_path("MODULEPATH", '/ncrc/proj/epic/spack-stack/c6/spack-stack-1.9.2/envs/ue-intel-2023.2.0/install/modulefiles/gcc/12.3.0')
 
 -- below two lines get us access to the spack-stack modules
-load("stack-intel/2024.2.1")
+load("stack-oneapi/2024.2.1")
 load("stack-cray-mpich/8.1.32")
 load("stack-python/3.11.7")
 load("cmake/3.27.9")
