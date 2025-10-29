@@ -186,7 +186,7 @@ class PrepOceanObs(Task):
                                 'variable': obs_space['observed variables'][0],
                                 'error ratio': obsprep_space['error ratio'],
                                 'input files': input_files,
-                                'output file': f"{RUN}.t{cycletime}z.{obs_space_name}.{cdatestr}.nc4"
+                                'output file': f"{RUN}.t{cycletime}z.{obs_space_name}.{cdatestr}.nc"
                             }
                             concat_config_file = obs_space_name + '_concat.yaml'
 
@@ -207,7 +207,7 @@ class PrepOceanObs(Task):
                         elif obsprep_space['type'] == 'nc':
 
                             obsprep_space['input files'] = [f[0] for f in fetched_files]
-                            ioda_filename = f"{RUN}.t{cyc:02d}z.{obs_space_name}.{cdatestr}.nc4"
+                            ioda_filename = f"{RUN}.t{cyc:02d}z.{obs_space_name}.{cdatestr}.nc"
                             obsprep_space['output file'] = ioda_filename
                             save_as_yaml(obsprep_space, ioda_config_file)
 
@@ -280,9 +280,13 @@ class PrepOceanObs(Task):
 
         logger.info("finalize")
 
-        RUN = self.task_config.RUN
-        cyc = self.task_config.cyc
-        COMOUT_OBS = self.task_config.COMOUT_OBS
+        run = self.task_config.RUN
+        run_date = self.task_config.PDY.strftime('%Y%m%d')
+        cycle = str(self.task_config.cyc).zfill(2)
+        dmpdir = self.task_config.DMPDIR
+        output_dir = os.path.join(dmpdir, f"{run}.{run_date}", cycle, 'ocean', 'insitu')
+        # Ensure output directory exists
+        os.makedirs(output_dir, exist_ok=True)
 
         obsspaces_to_save = YAMLFile(self.task_config.save_list_file)
         files_to_save = []
@@ -291,14 +295,14 @@ class PrepOceanObs(Task):
 
             conv_config_file = os.path.basename(obs_space['conversion config file'])
             if os.path.exists(conv_config_file):
-                conv_config_file_dest = os.path.join(COMOUT_OBS, conv_config_file)
+                conv_config_file_dest = os.path.join(output_dir, conv_config_file)
                 files_to_save.append([conv_config_file, conv_config_file_dest])
             else:
                 logger.warning(f"IODA conversion config file {conv_config_file} does not exist, cannot copy to COMROOT")
 
             ioda_file = os.path.basename(obs_space['output file'])
             if os.path.exists(ioda_file):
-                obs_file_dest = os.path.join(COMOUT_OBS, ioda_file)
+                obs_file_dest = os.path.join(output_dir, ioda_file)
                 files_to_save.append([ioda_file, obs_file_dest])
             else:
                 logger.warning(f"IODA file {ioda_file} does not exist, cannot copy to COMROOT")
