@@ -284,7 +284,7 @@ class PrepOceanObs(Task):
         run_date = self.task_config.PDY.strftime('%Y%m%d')
         cycle = str(self.task_config.cyc).zfill(2)
         dmpdir = self.task_config.DMPDIR
-        output_dir = os.path.join(dmpdir, f"{run}.{run_date}", cycle, 'ocean', 'insitu')
+        output_dir = os.path.join(dmpdir, f"{run}.{run_date}", cycle)
         # Ensure output directory exists
         os.makedirs(output_dir, exist_ok=True)
 
@@ -293,18 +293,21 @@ class PrepOceanObs(Task):
 
         for obs_space in obsspaces_to_save['observations']:
 
+            obs_subdir = obs_space["dmpdir subdir"]
+            output_subdir = os.path.join(output_dir, obs_subdir)
+
             conv_config_file = os.path.basename(obs_space['conversion config file'])
             if os.path.exists(conv_config_file):
-                conv_config_file_dest = os.path.join(output_dir, conv_config_file)
+                conv_config_file_dest = os.path.join(output_subdir, conv_config_file)
                 files_to_save.append([conv_config_file, conv_config_file_dest])
             else:
-                logger.warning(f"IODA conversion config file {conv_config_file} does not exist, cannot copy to COMROOT")
+                logger.warning(f"IODA conversion config file {conv_config_file} does not exist, cannot copy to DMPDIR")
 
             ioda_file = os.path.basename(obs_space['output file'])
             if os.path.exists(ioda_file):
-                obs_file_dest = os.path.join(output_dir, ioda_file)
+                obs_file_dest = os.path.join(output_subdir, ioda_file)
                 files_to_save.append([ioda_file, obs_file_dest])
             else:
-                logger.warning(f"IODA file {ioda_file} does not exist, cannot copy to COMROOT")
+                logger.warning(f"IODA file {ioda_file} does not exist, cannot copy to DMPDIR")
 
         FileHandler({'copy': files_to_save}).sync()
