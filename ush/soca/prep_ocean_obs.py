@@ -186,7 +186,7 @@ class PrepOceanObs(Task):
                                 'variable': obs_space['observed variables'][0],
                                 'error ratio': obsprep_space['error ratio'],
                                 'input files': input_files,
-                                'output file': f"{RUN}.t{cycletime}z.{obs_space_name}.{cdatestr}.nc"
+                                'output file': f"{RUN}.t{cycletime}z.{obs_space_name}.nc"
                             }
                             concat_config_file = obs_space_name + '_concat.yaml'
 
@@ -207,7 +207,7 @@ class PrepOceanObs(Task):
                         elif obsprep_space['type'] == 'nc':
 
                             obsprep_space['input files'] = [f[0] for f in fetched_files]
-                            ioda_filename = f"{RUN}.t{cyc:02d}z.{obs_space_name}.{cdatestr}.nc"
+                            ioda_filename = f"{RUN}.t{cyc:02d}z.{obs_space_name}.nc"
                             obsprep_space['output file'] = ioda_filename
                             save_as_yaml(obsprep_space, ioda_config_file)
 
