@@ -30,12 +30,12 @@ data_in:
     - ['{{ COMIN_ATMOS_RESTART_PREV }}/{{ current_cycle | to_fv3time }}.sfc_data.tile5.nc', '{{ DATA }}/bkg/']
     - ['{{ COMIN_ATMOS_RESTART_PREV }}/{{ current_cycle | to_fv3time }}.sfc_data.tile6.nc', '{{ DATA }}/bkg/']
 
-    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ '%03d' % OCNRES }}_oro_data.tile1.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile1.nc" ]
-    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ '%03d' % OCNRES }}_oro_data.tile2.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile2.nc" ]
-    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ '%03d' % OCNRES }}_oro_data.tile3.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile3.nc" ]
-    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ '%03d' % OCNRES }}_oro_data.tile4.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile4.nc" ]
-    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ '%03d' % OCNRES }}_oro_data.tile5.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile5.nc" ]
-    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ '%03d' % OCNRES }}_oro_data.tile6.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile6.nc" ]
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile1.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile1.nc" ]
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile2.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile2.nc" ]
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile3.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile3.nc" ]
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile4.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile4.nc" ]
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile5.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile5.nc" ]
+    - ["{{ FIXorog }}/{{ CASE }}/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile6.nc", "{{ DATA }}/bkg/{{ CASE }}.mx{{ OCNRES }}_oro_data.tile6.nc" ]
 
 {% filter indent(width=4) %}
 {% include 'snow_stage_jedi_fix.yaml.j2' %}
