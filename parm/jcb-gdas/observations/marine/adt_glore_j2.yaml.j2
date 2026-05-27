@@ -12,11 +12,6 @@
     simulated variables: [absoluteDynamicTopography]
     io pool:
       max pool size: 1
-{% if marine_letkf_app | default(false) %}
-    distribution:
-      name: Halo
-      halo size: {{ marine_letkf_dist_halo_size }}
-{% endif %}
   get values:
     time interpolation: linear
   obs operator:
@@ -47,7 +42,7 @@
         options:
           variables: [GeoVaLs/mesoscale_representation_error,
                       ObsError/absoluteDynamicTopography]
-          coefs: [0.2,
+          coefs: [0.05,
                   1.0]
   - filter: Domain Check
     where:
@@ -67,17 +62,7 @@
         name: MetaData/longitude
       minvalue: 32
       maxvalue: 56
-  - filter: BlackList
-    where:
-    - variable:
-        name: MetaData/latitude
-      minvalue: -0.25
-      maxvalue: 0.25
-    - variable:
-        name: MetaData/longitude
-      minvalue: -0.25
-      maxvalue: 0.25
-{% if marine_letkf_app | default(false) %}
+{% if letkf_app | default(false) %}
   obs localizations:
   - localization method: Rossby
     base value: 100.0e3
