@@ -63,7 +63,17 @@ elif [[ $MACHINE_ID = stampede* ]] ; then
     fi
     module purge
 
-elif [[ $MACHINE_ID = gaea* ]] ; then
+elif [[ $MACHINE_ID = gaeac7 ]]; then
+    # We are on GAEA C7.
+    # make sure the /ncrc/proj automount is awake
+    stat /autofs/ncrc-svm1_proj >/dev/null 2>&1
+    if (! eval module help > /dev/null 2>&1); then
+        source /sw/gaea-c7/lmod/9.4.3/init/bash
+    fi
+    module reset
+    set -u
+
+elif [[ "$MACHINE_ID" = "gaea5" || "$MACHINE_ID" = "gaeac6" ]]; then
     # We are on GAEA.
     if ( ! eval module help > /dev/null 2>&1 ) ; then
         # We cannot simply load the module command.  The GAEA
